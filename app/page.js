@@ -84,7 +84,7 @@ export default function LetBLanding() {
   const NIVELAMENTO = "https://nivelamentoletb.netlify.app/";
   const TRAVEL = "https://letb-english.herospark.co/letb-travel";
   const EBOOK = "https://letb-english.herospark.co/faith-fluency-seu-caminho-para-o-ingles-com-proposito";
-  const WHATSAPP = "https://wa.me/5541997487181?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Let%20B.";
+  const WHATSAPP = "https://wa.me/5541998167303?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Let%20B.";
   const INSTA = "https://www.instagram.com/letb__english?igsh=djdvMmozbm1hcDcy";
   const EMAIL = "letb.english@gmail.com";
 
@@ -578,7 +578,7 @@ export default function LetBLanding() {
 
           <div style={{ display:"flex",gap:20,marginTop:28,flexWrap:"wrap",alignItems:"center" }}>
             <a href={WHATSAPP} target="_blank" rel="noopener" style={{ display:"flex",alignItems:"center",gap:8,fontSize:13,opacity:.5 }}>
-              <I.Whatsapp/> (41) 99748-7181
+              <I.Whatsapp/> (41) 9816-7303
             </a>
             <a href={INSTA} target="_blank" rel="noopener" style={{ display:"flex",alignItems:"center",gap:8,fontSize:13,opacity:.5 }}>
               <I.Instagram/> @letb__english
