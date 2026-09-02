@@ -81,7 +81,7 @@ export default function LetBLanding() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  const NIVELAMENTO = "https://nivelamentoletb.netlify.app/";
+  const NIVELAMENTO = "https://nivelamento-letb.vercel.app/";
   const TRAVEL = "https://letb-english.herospark.co/letb-travel";
   const EBOOK = "https://letb-english.herospark.co/faith-fluency-seu-caminho-para-o-ingles-com-proposito";
   const WHATSAPP = "https://wa.me/5541998167303?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Let%20B.";
