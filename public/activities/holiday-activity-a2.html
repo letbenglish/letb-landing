@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let B — Freedom in Celebration (A2)</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --letb-depth: #1e1e1e;
+            --letb-lively: #fc5e2d;
+            --letb-precious: #ffba31;
+            --letb-clarity: #f4f2df;
+            --letb-growth: #4caa49;
+            --letb-connection: #284684;
+            --letb-font-display: 'DM Serif Display', serif;
+            --letb-font-body: 'DM Sans', sans-serif;
+        }
+        
+        body {
+            font-family: var(--letb-font-body);
+            background: var(--letb-clarity);
+            color: var(--letb-depth);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .logo-seal {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border: 3px dashed var(--letb-precious);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--letb-depth);
+            font-size: 40px;
+        }
+        
+        h1 {
+            font-family: var(--letb-font-display);
+            font-size: 2.8rem;
+            color: var(--letb-depth);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--letb-connection);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .timer {
+            display: inline-block;
+            background: var(--letb-lively);
+            color: var(--letb-clarity);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(30, 30, 30, 0.1);
+            animation: slideUp 0.6s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.3s; }
+        .section:nth-child(3) { animation-delay: 0.5s; }
+        .section:nth-child(4) { animation-delay: 0.7s; }
+        .section:nth-child(5) { animation-delay: 0.9s; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 12px;
+        }
+        
+        .section-number {
+            background: var(--letb-lively);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .section-title {
+            font-family: var(--letb-font-display);
+            font-size: 1.8rem;
+            color: var(--letb-depth);
+            font-weight: 600;
+        }
+        
+        .time-indicator {
+            margin-left: auto;
+            background: var(--letb-precious);
+            color: var(--letb-depth);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .verse-box {
+            background: var(--letb-depth);
+            color: var(--letb-clarity);
+            padding: 1.5rem;
+            border-left: 4px solid var(--letb-precious);
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+        
+        .verse-reference {
+            font-size: 0.9rem;
+            color: var(--letb-precious);
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: 500;
+        }
+        
+        .context-card {
+            background: rgba(252, 94, 45, 0.08);
+            border-left: 4px solid var(--letb-lively);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .context-card strong {
+            color: var(--letb-lively);
+        }
+        
+        .vocabulary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .vocab-card {
+            background: var(--letb-clarity);
+            border: 1px solid rgba(252, 94, 45, 0.2);
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .vocab-word {
+            font-weight: 600;
+            color: var(--letb-lively);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .vocab-meaning {
+            font-size: 0.95rem;
+            color: var(--letb-depth);
+            line-height: 1.5;
+        }
+        
+        .audio-player {
+            background: var(--letb-depth);
+            color: var(--letb-clarity);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .audio-player button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--letb-lively);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background 0.3s;
+        }
+        
+        .audio-player button:hover {
+            background: #e64c1a;
+        }
+        
+        .audio-player span {
+            flex: 1;
+            font-size: 0.9rem;
+            min-width: 200px;
+        }
+        
+        .audio-status {
+            font-size: 0.85rem;
+            color: var(--letb-precious);
+            margin-top: 0.5rem;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--letb-font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: var(--letb-lively);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #e64c1a;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: var(--letb-growth);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #3a8a35;
+            transform: translateY(-2px);
+        }
+        
+        .feedback {
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            display: none;
+        }
+        
+        .feedback.success {
+            background: rgba(76, 170, 73, 0.1);
+            border-left: 4px solid var(--letb-growth);
+            color: var(--letb-growth);
+            display: block;
+        }
+        
+        .feedback.info {
+            background: rgba(40, 70, 132, 0.1);
+            border-left: 4px solid var(--letb-connection);
+            color: var(--letb-connection);
+            display: block;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--letb-precious);
+            color: var(--letb-depth);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
+        .encouragement {
+            background: linear-gradient(135deg, rgba(252, 94, 45, 0.08), rgba(255, 186, 49, 0.08));
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--letb-depth);
+            border-left: 4px solid var(--letb-precious);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--letb-connection);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(30, 30, 30, 0.1);
+            margin-top: 3rem;
+        }
+        
+        .translation {
+            background: rgba(40, 70, 132, 0.05);
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--letb-connection);
+            margin-top: 0.5rem;
+            border-left: 4px solid var(--letb-connection);
+        }
+        
+        .interactive-section {
+            background: rgba(76, 170, 73, 0.05);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        
+        .activity-prompt {
+            background: white;
+            border-left: 4px solid var(--letb-growth);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .activity-prompt strong {
+            color: var(--letb-growth);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .multiple-choice {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .choice {
+            padding: 0.8rem;
+            background: var(--letb-clarity);
+            border: 1px solid rgba(252, 94, 45, 0.2);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .choice:hover {
+            border-color: var(--letb-lively);
+            background: rgba(252, 94, 45, 0.05);
+        }
+        
+        .choice.selected {
+            background: rgba(252, 94, 45, 0.15);
+            border-color: var(--letb-lively);
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 2rem; }
+            .section { padding: 1.5rem; }
+            .audio-player { flex-direction: column; }
+            .audio-player span { width: 100%; }
+            button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-seal">🎉</div>
+            <h1>Freedom in Celebration</h1>
+            <p class="subtitle">Holidays and freedom — Let it be</p>
+            <div class="timer">⏱️ 30-minute activity (A2 - Roots)</div>
+        </header>
+
+        <!-- OPENING -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">Opening: Why Holidays?</h2>
+                <div class="time-indicator">3 min</div>
+            </div>
+            
+            <p style="margin: 1rem 0; font-size: 1.05rem;">Today is a holiday. Why do we celebrate? Is it just a day off work? Or is it something more important?</p>
+            
+            <p style="margin: 1rem 0;">In the Bible, Paul tells his friends (the Colossians) about real freedom. He says: Don't worry about eating this food or that food. Don't worry about special days. The most important thing is <strong>Christ</strong>.</p>
+            
+            <div class="badge">CEFR Level: A2 (Roots)</div>
+            <div class="badge">Simple vocabulary, more support</div>
+        </section>
+
+        <!-- LISTEN & ABSORB -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">Listen & Learn</h2>
+                <div class="time-indicator">7 min</div>
+            </div>
+            
+            <p style="margin: 1rem 0; font-weight: 500;">Let's LISTEN to the passage. You don't need to understand every word. Just listen and feel the message.</p>
+            
+            <div class="audio-player">
+                <button onclick="playAudio('verse')">▶</button>
+                <span>
+                    Listen to the Bible verse
+                    <div class="audio-status" id="audioStatus"></div>
+                </span>
+            </div>
+            
+            <div class="verse-box">
+                Therefore do not let anyone judge you by what you eat or drink, or with regard to a religious festival, a New Moon celebration or a Sabbath day. These are a shadow of the things that were to come; the reality, however, is found in Christ.
+                <div class="verse-reference">Colossians 2:16-17 (NIV)</div>
+            </div>
+            
+            <p style="margin: 1rem 0; font-size: 0.95rem; color: var(--letb-connection);">📌 <strong>What is this verse about?</strong> Paul says: Don't let people tell you what to eat. Don't worry about holidays. The important thing is Christ.</p>
+        </section>
+
+        <!-- VOCABULARY -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">Important Words</h2>
+                <div class="time-indicator">6 min</div>
+            </div>
+            
+            <p style="margin: 1rem 0;">These words help us understand the verse. Let's learn them one by one.</p>
+            
+            <div class="vocabulary">
+                <div class="vocab-card">
+                    <div class="vocab-word">judge</div>
+                    <div class="vocab-meaning">to say if something is good or bad</div>
+                    <div class="translation">português: julgar</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-word">freedom</div>
+                    <div class="vocab-meaning">not controlled by others; free</div>
+                    <div class="translation">português: liberdade</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-word">festival</div>
+                    <div class="vocab-meaning">a celebration or party</div>
+                    <div class="translation">português: festival</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-word">Christ</div>
+                    <div class="vocab-meaning">Jesus, the center of Christian faith</div>
+                    <div class="translation">português: Cristo</div>
+                </div>
+            </div>
+            
+            <div class="context-card">
+                <strong>🔍 Simple Grammar:</strong> "Do not let" = "Don't allow". Example: "Do not let anyone judge you" = "Don't let people judge you."
+            </div>
+        </section>
+
+        <!-- INTERACTIVE ACTIVITIES -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">Practice</h2>
+                <div class="time-indicator">10 min</div>
+            </div>
+            
+            <h3 style="font-family: var(--letb-font-display); font-size: 1.5rem; color: var(--letb-lively); margin: 1.5rem 0 1rem;">Activity 1: Multiple Choice</h3>
+            
+            <div class="interactive-section">
+                <div class="activity-prompt">
+                    <strong>1. What should we NOT worry about?</strong>
+                    <div class="multiple-choice" id="mc1">
+                        <div class="choice" onclick="selectChoice(this, 1, false)">A) Jesus (Christ)</div>
+                        <div class="choice" onclick="selectChoice(this, 1, true)">B) What we eat or drink</div>
+                        <div class="choice" onclick="selectChoice(this, 1, false)">C) God</div>
+                    </div>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+                
+                <div class="activity-prompt">
+                    <strong>2. Paul says: "___________ do not let anyone judge you."</strong>
+                    <div class="multiple-choice" id="mc2">
+                        <div class="choice" onclick="selectChoice(this, 2, true)">A) Therefore</div>
+                        <div class="choice" onclick="selectChoice(this, 2, false)">B) Because</div>
+                        <div class="choice" onclick="selectChoice(this, 2, false)">C) However</div>
+                    </div>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+            </div>
+            
+            <h3 style="font-family: var(--letb-font-display); font-size: 1.5rem; color: var(--letb-lively); margin: 2rem 0 1rem;">Activity 2: True or False</h3>
+            
+            <div class="interactive-section">
+                <div class="activity-prompt">
+                    <strong>The verse says: "Festivals and holidays are very important."</strong>
+                    <div style="display: flex; gap: 1rem; margin: 1rem 0;">
+                        <button class="btn-primary" onclick="checkTrueFalse(1, false)">TRUE</button>
+                        <button class="btn-primary" onclick="checkTrueFalse(1, true)">FALSE</button>
+                    </div>
+                    <div class="feedback" id="feedbackTF1"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOSING -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2 class="section-title">Final Message</h2>
+                <div class="time-indicator">4 min</div>
+            </div>
+            
+            <div class="encouragement">
+                "Do not let anyone judge you..."
+                <br><br>
+                Paul's message is simple: You don't need to follow all the rules about food or holidays. Christ is what is real and important. Freedom means being free from what others think you should do.
+            </div>
+            
+            <p style="margin: 1rem 0; font-size: 1.05rem;"><strong>What you learned today:</strong></p>
+            <ul style="margin-left: 1.5rem; margin: 1rem 0;">
+                <li>✅ Four important words: judge, freedom, festival, Christ</li>
+                <li>✅ The main idea: Christ is more important than holidays and rules</li>
+                <li>✅ The simple grammar: "Do not let" = "Don't allow"</li>
+                <li>✅ Real freedom comes from Christ, not from rules</li>
+            </ul>
+            
+            <div class="button-group">
+                <button class="btn-success" onclick="completeActivity()">✓ I finished!</button>
+            </div>
+        </section>
+
+        <div class="encouragement" style="margin-top: 3rem; background: linear-gradient(135deg, rgba(40, 70, 132, 0.08), rgba(76, 170, 73, 0.08)); text-align: center; font-size: 1rem; color: var(--letb-connection);">
+            <strong>Great job!</strong> You listened, learned, and practiced. This is real learning.
+            <br><br>
+            <em>"Let it be" — let English become part of your life, naturally.</em>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Let B — Learning English Through the Bible</strong></p>
+        <p>A2 Roots Level | 30-minute activity</p>
+        <p style="margin-top: 1rem; color: var(--letb-lively);">More lessons at <strong>app.letbenglish.com</strong></p>
+    </footer>
+
+    <script>
+        // Audio playback with Google Text-to-Speech fallback
+        function playAudio(type) {
+            const statusEl = document.getElementById('audioStatus');
+            statusEl.textContent = 'Loading audio...';
+            
+            const verseText = "Therefore do not let anyone judge you by what you eat or drink, or with regard to a religious festival, a New Moon celebration or a Sabbath day. These are a shadow of the things that were to come; the reality, however, is found in Christ.";
+            
+            try {
+                // Use Web Speech API (works in most browsers)
+                const utterance = new SpeechSynthesisUtterance(verseText);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.85;
+                utterance.pitch = 1;
+                utterance.volume = 1;
+                
+                utterance.onstart = () => {
+                    statusEl.textContent = '🎙️ Playing now...';
+                };
+                
+                utterance.onend = () => {
+                    statusEl.textContent = '✓ Done!';
+                };
+                
+                utterance.onerror = (event) => {
+                    statusEl.textContent = '⚠️ Audio not available';
+                    console.error('Speech error:', event);
+                };
+                
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.speak(utterance);
+                
+            } catch (error) {
+                statusEl.textContent = '⚠️ Error';
+                console.error('Audio error:', error);
+            }
+        }
+        
+        function selectChoice(element, questionNum, isCorrect) {
+            const parent = element.parentElement;
+            const siblings = parent.querySelectorAll('.choice');
+            siblings.forEach(s => s.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            const feedback = document.getElementById('feedback' + questionNum);
+            if (isCorrect) {
+                feedback.className = 'feedback success';
+                feedback.textContent = '✓ Correct!';
+            } else {
+                feedback.className = 'feedback';
+                feedback.textContent = '✗ Try again!';
+            }
+        }
+        
+        function checkTrueFalse(questionNum, answer) {
+            const feedback = document.getElementById('feedbackTF' + questionNum);
+            // Answer is true = false (the statement is NOT what the verse says)
+            if (answer === true) {
+                feedback.className = 'feedback success';
+                feedback.textContent = '✓ Correct! The verse says festivals are NOT the most important thing. Christ is.';
+            } else {
+                feedback.className = 'feedback';
+                feedback.textContent = '✗ Not quite. The verse teaches that Christ is more important than festivals and rules.';
+            }
+        }
+        
+        function completeActivity() {
+            alert('🎉 Excellent! You finished the A2 lesson!\n\nYou learned vocabulary, practiced listening, and understood the main message.\n\nNext: Try the B1-B2 level, or review this lesson again. Well done!');
+        }
+    </script>
+</body>
+</html>
