@@ -23,24 +23,14 @@ function Reveal({ children, delay = 0, style = {} }) {
   );
 }
 
-// ─── SVG Logo faithfully recreated ──────────────────────────────────
-function LetBLogo({ height = 36, light = false }) {
-  const textColor = light ? "#f4f2df" : "#1e1e1e";
-  return (
-    <svg height={height} viewBox="0 0 260 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Small arch - Lively */}
-      <rect x="0" y="20" width="30" height="52" rx="15" fill="#fc5e2d"/>
-      {/* Tall arch - Precious */}
-      <rect x="34" y="4" width="30" height="68" rx="15" fill="#ffba31"/>
-      {/* LetB text */}
-      <text x="74" y="60" fontFamily="'DM Sans', sans-serif" fontWeight="800" fontSize="56" fill={textColor} letterSpacing="-1">LetB</text>
-    </svg>
-  );
+// ─── Logo oficial (lockup da marca) ─────────────────────────────────
+function LetBLogo({ height = 36 }) {
+  return <img src="/brand/logo-lockup.png" alt="Let B" style={{ height, width:"auto", display:"block" }} />;
 }
 
 // ─── Icon set ───────────────────────────────────────────────────────
 const I = {
-  Book: () => <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>,
+  Book: ({ s = 26 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>,
   Mic: () => <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>,
   Headphones: () => <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>,
   Heart: () => <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>,
@@ -51,7 +41,7 @@ const I = {
   Check: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
   Lock: () => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
   Arrow: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>,
-  Plane: () => <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>,
+  Plane: ({ s = 26 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>,
   Instagram: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>,
   Mail: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
   Whatsapp: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>,
@@ -134,7 +124,7 @@ export default function LetBLanding() {
       <nav style={{ position:"fixed",top:0,left:0,right:0,zIndex:1000,padding:scrolled?"12px 24px":"20px 24px",background:scrolled?"rgba(30,30,30,.95)":"transparent",backdropFilter:scrolled?"blur(20px)":"none",transition:"all .3s ease" }}>
         <div style={{ maxWidth:1200,margin:"0 auto",display:"flex",justifyContent:"space-between",alignItems:"center" }}>
           <a href="#" style={{ display:"flex",alignItems:"center" }}>
-            <LetBLogo height={32} light />
+            <LetBLogo height={40} />
           </a>
           <div className="dnav" style={{ display:"flex",gap:28,alignItems:"center" }}>
             {[["#metodo","Método"],["#niveis","Níveis"],["#experiencia","Experiência"],["#depoimentos","Histórias"]].map(([h,t])=>(
@@ -190,10 +180,10 @@ export default function LetBLanding() {
           {/* Products */}
           <div style={{ display:"flex",gap:16,justifyContent:"center",flexWrap:"wrap",marginTop:32,animation:"fadeUp 1s ease .6s",animationFillMode:"both" }}>
             <a href={EBOOK} target="_blank" rel="noopener" style={{ display:"inline-flex",alignItems:"center",gap:8,padding:"10px 20px",borderRadius:10,background:"rgba(244,242,223,.06)",border:"1px solid rgba(244,242,223,.1)",color:"#f4f2df",fontSize:14,fontWeight:500,transition:"all .3s" }}>
-              📗 E-book Faith & Fluency
+              <I.Book s={18}/> E-book Faith & Fluency
             </a>
             <a href={TRAVEL} target="_blank" rel="noopener" style={{ display:"inline-flex",alignItems:"center",gap:8,padding:"10px 20px",borderRadius:10,background:"rgba(244,242,223,.06)",border:"1px solid rgba(244,242,223,.1)",color:"#f4f2df",fontSize:14,fontWeight:500,transition:"all .3s" }}>
-              ✈️ Let B Travel
+              <I.Plane s={18}/> Let B Travel
             </a>
           </div>
         </div>
@@ -234,13 +224,13 @@ export default function LetBLanding() {
           </Reveal>
           <div style={{ display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:24,marginTop:48 }} className="g3">
             {[
-              { emoji:"🌍", title:"Propósito", desc:"Transformar o inglês em uma experiência espiritual e prática, capacitando cada aluno a viver seu chamado." },
-              { emoji:"📬", title:"Cartas Vivas", desc:"Cada aluno é uma mensagem viva, com a missão de comunicar valores e transformação a cada encontro." },
-              { emoji:"🧠", title:"Neuroaprendizagem", desc:"Técnicas baseadas em neurociência aliadas à Bíblia pra acelerar o aprendizado e tornar o inglês parte da sua identidade." },
+              { selo:"/brand/selo-farol-verde.png", title:"Propósito", desc:"Transformar o inglês em uma experiência espiritual e prática, capacitando cada aluno a viver seu chamado." },
+              { selo:"/brand/selo-pessoa-laranja.png", title:"Cartas Vivas", desc:"Cada aluno é uma mensagem viva, com a missão de comunicar valores e transformação a cada encontro." },
+              { selo:"/brand/selo-fone-amarelo.png", title:"Neuroaprendizagem", desc:"Técnicas baseadas em neurociência aliadas à Bíblia pra acelerar o aprendizado e tornar o inglês parte da sua identidade." },
             ].map((c,i)=>(
               <Reveal key={i} delay={.1*i}>
                 <div style={{ background:"rgba(30,30,30,.03)",borderRadius:20,padding:32,border:"1px solid rgba(30,30,30,.05)",height:"100%",textAlign:"left" }}>
-                  <span style={{ fontSize:32 }}>{c.emoji}</span>
+                  <img src={c.selo} alt="" style={{ width:56,height:"auto",display:"block" }} />
                   <h3 style={{ fontSize:20,marginTop:14,marginBottom:8 }}>{c.title}</h3>
                   <p style={{ fontSize:15,lineHeight:1.65,opacity:.55 }}>{c.desc}</p>
                 </div>
@@ -436,7 +426,7 @@ export default function LetBLanding() {
                     <span style={{ fontSize:38,fontFamily:"var(--fd)" }}>R$ 450</span>
                     <span style={{ opacity:.45,fontSize:14 }}>/mês</span>
                   </div>
-                  <p style={{ fontSize:12,opacity:.4,marginBottom:24,lineHeight:1.5 }}>💳 Cartão ou Pix • Sem fidelidade</p>
+                  <p style={{ fontSize:12,opacity:.4,marginBottom:24,lineHeight:1.5 }}>Cartão ou Pix • Sem fidelidade</p>
                   <div style={{ flex:1 }}>
                     {["1h de aula particular por semana","Plataforma interativa completa","Material de apoio bíblico","Assistência pedagógica","Grupo no WhatsApp","Sem compromisso de permanência"].map((f,fi)=>(
                       <div key={fi} style={{ display:"flex",gap:10,marginBottom:12,alignItems:"flex-start" }}>
@@ -461,7 +451,7 @@ export default function LetBLanding() {
                   </div>
                   <p style={{ fontSize:13,opacity:.5,marginBottom:4 }}>Pix mensal ou cartão (sujeito a taxas)</p>
                   <div style={{ background:"rgba(76,170,73,.12)",borderRadius:10,padding:"10px 14px",marginBottom:24,marginTop:8 }}>
-                    <p style={{ fontSize:13,fontWeight:600,color:"#4caa49" }}>💰 À vista com 10% off: R$ 2.160</p>
+                    <p style={{ fontSize:13,fontWeight:600,color:"#4caa49" }}>À vista com 10% off: R$ 2.160</p>
                     <p style={{ fontSize:11,opacity:.6,marginTop:2 }}>Pix ou link de pagamento no cartão</p>
                   </div>
                   <div style={{ flex:1 }}>
@@ -488,7 +478,7 @@ export default function LetBLanding() {
                   </div>
                   <p style={{ fontSize:13,opacity:.5,marginBottom:4 }}>Pix mensal ou cartão (sujeito a taxas)</p>
                   <div style={{ background:"rgba(76,170,73,.12)",borderRadius:10,padding:"10px 14px",marginBottom:24,marginTop:8 }}>
-                    <p style={{ fontSize:13,fontWeight:600,color:"#4caa49" }}>💰 À vista com 10% off: R$ 3.780</p>
+                    <p style={{ fontSize:13,fontWeight:600,color:"#4caa49" }}>À vista com 10% off: R$ 3.780</p>
                     <p style={{ fontSize:11,opacity:.6,marginTop:2 }}>Pix ou link de pagamento no cartão</p>
                   </div>
                   <div style={{ flex:1 }}>
@@ -505,7 +495,7 @@ export default function LetBLanding() {
                 </div>
               </div>
               <p style={{ textAlign:"center",marginTop:20,fontSize:13,opacity:.4 }}>
-                💡 No plano anual você economiza R$ 1.200 comparado ao avulso. Pagamento à vista ganha mais 10% off.
+                No plano anual você economiza R$ 1.200 comparado ao avulso. Pagamento à vista ganha mais 10% off.
               </p>
             </div>
 
@@ -552,7 +542,7 @@ export default function LetBLanding() {
         <div className="mx" style={{ position:"relative",zIndex:1 }}>
           <Reveal>
             <div style={{ border:"3px dashed rgba(255,186,49,.2)",borderRadius:8,display:"inline-flex",padding:16,marginBottom:28 }}>
-              <LetBLogo height={28} light />
+              <LetBLogo height={36} />
             </div>
           </Reveal>
           <Reveal delay={.1}>
@@ -571,7 +561,7 @@ export default function LetBLanding() {
                 Fazer o Nivelamento Agora <I.Arrow/>
               </a>
               <a href={WHATSAPP} target="_blank" rel="noopener" className="bs">
-                💬 Falar no WhatsApp
+                <I.Whatsapp/> Falar no WhatsApp
               </a>
             </div>
           </Reveal>
@@ -582,7 +572,7 @@ export default function LetBLanding() {
       <footer style={{ background:"#1e1e1e",color:"#f4f2df",borderTop:"1px solid rgba(244,242,223,.06)",padding:"48px 24px 28px" }}>
         <div className="mx">
           <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:24 }}>
-            <LetBLogo height={28} light />
+            <LetBLogo height={36} />
             <div style={{ display:"flex",gap:28,flexWrap:"wrap",alignItems:"center" }}>
               {[["#metodo","Método"],["#niveis","Níveis"],["#experiencia","Experiência"],["#planos","Planos"]].map(([h,t])=>(
                 <a key={h} href={h} style={{ fontSize:14,opacity:.45 }}>{t}</a>
