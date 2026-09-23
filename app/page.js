@@ -212,7 +212,7 @@ export default function LetBLanding() {
           <div style={{ textAlign:"center",marginBottom:48 }}>
             <span style={{ display:"inline-block",padding:"5px 14px",borderRadius:20,fontSize:12,fontWeight:600,textTransform:"uppercase",letterSpacing:0.8,background:"rgba(252,94,45,.15)",color:"#fc5e2d" }}>Expansão</span>
             <h2 style={{ fontFamily:"'DM Serif Display',serif",color:"#f4f2df",fontSize:"clamp(28px,4.5vw,44px)",lineHeight:1.15,marginTop:20,marginBottom:16 }}>A Let B já chegou até aqui</h2>
-            <p style={{ color:"rgba(244,242,223,.5)",fontSize:17,maxWidth:550,margin:"0 auto",lineHeight:1.7 }}>Cartas vivas espalhadas por 3 países, 2 continentes e 7 estados brasileiros.</p>
+            <p style={{ color:"rgba(244,242,223,.5)",fontSize:17,maxWidth:550,margin:"0 auto",lineHeight:1.7 }}>Cartas vivas espalhadas por 4 países, 2 continentes e 7 estados brasileiros.</p>
           </div>
           <div style={{ maxWidth:1100,margin:"0 auto",borderRadius:20,overflow:"hidden",border:"1px solid rgba(244,242,223,.08)" }}>
             <img src="/expansao.png" alt="Mapa de expansão da Let B — presença no Brasil (7 estados), Texas (EUA), Portugal e Londres (Reino Unido)" style={{ width:"100%",height:"auto",display:"block" }}/>
