@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import VerseStamp from "./VerseStamp";
 
 function useInView(opts = {}) {
   const ref = useRef(null);
@@ -113,6 +114,28 @@ export default function LetBLanding() {
         @media(max-width:900px){.g3{grid-template-columns:1fr!important}.g2{grid-template-columns:1fr!important}}
         @media(max-width:600px){.g4{grid-template-columns:1fr 1fr!important}}
         @media(max-width:450px){.g4{grid-template-columns:1fr!important}}
+        .hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(170deg,#1e1e1e 0%,#2a1a14 40%,#1e1e1e 100%);position:relative;overflow:hidden;padding:128px 24px 88px}
+        .hero-grid{max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:center;position:relative;z-index:1}
+        .hero-h1{color:#f4f2df;font-size:clamp(40px,4.4vw,62px);line-height:1.08;margin-bottom:22px;text-wrap:balance}
+        .hero-sub{color:rgba(244,242,223,.68);font-size:clamp(17px,1.4vw,19px);line-height:1.65;max-width:34em;margin-bottom:34px}
+        .hs-m{display:none}
+        .hero-cta{font-size:17px;padding:18px 32px}
+        .hero-proof{margin-top:18px;font-size:13px;line-height:1.5;color:#f4f2df;opacity:.45}
+        .hero-visual{padding-top:40px}
+        .also{display:flex;gap:18px;align-items:flex-start;padding:24px;border-radius:20px;background:rgba(30,30,30,.03);border:1px solid rgba(30,30,30,.06);color:#1e1e1e}
+        @media(max-width:959px){
+          .hero{min-height:0;padding:104px 20px 64px}
+          .hero-grid{grid-template-columns:1fr;gap:28px}
+          .hero-copy{max-width:640px}
+          .hero-visual{padding-top:44px}
+          .hs-d{display:none}.hs-m{display:inline}
+          .hero-visual .vs{margin:0}
+        }
+        @media(max-width:480px){
+          .hero-h1{font-size:34px;margin-bottom:16px}
+          .hero-sub{font-size:16px;margin-bottom:24px}
+          .hero-cta{width:100%;justify-content:center}
+        }
       `}</style>
 
       {/* ═══ NAV ═══ */}
@@ -145,44 +168,52 @@ export default function LetBLanding() {
       </nav>
 
       {/* ═══ HERO ═══ */}
-      <section style={{ minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",background:"linear-gradient(170deg,#1e1e1e 0%,#2a1a14 40%,#1e1e1e 100%)",position:"relative",overflow:"hidden",padding:"120px 24px 80px" }}>
-        <div style={{ position:"absolute",top:"10%",right:"5%",opacity:.05 }}>
-          <div style={{ width:400,height:400,borderRadius:"50%",border:"2px solid #ffba31" }}/>
-        </div>
-        <div style={{ position:"absolute",bottom:"15%",left:"3%",opacity:.04 }}>
-          <div style={{ width:300,height:300,borderRadius:"50%",border:"2px solid #fc5e2d" }}/>
-        </div>
-        <div style={{ position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:600,height:600,borderRadius:"50%",background:"radial-gradient(circle,rgba(252,94,45,.08) 0%,transparent 70%)" }}/>
+      <section className="hero">
+        <div style={{ position:"absolute",top:"50%",left:"72%",transform:"translate(-50%,-50%)",width:700,height:700,borderRadius:"50%",background:"radial-gradient(circle,rgba(252,94,45,.09) 0%,transparent 70%)",pointerEvents:"none" }}/>
 
-        <div style={{ maxWidth:900,textAlign:"center",position:"relative",zIndex:1 }}>
-          <div style={{ animation:"fadeUp 1s ease",marginBottom:24 }}>
-            <Badge text="Learning English Through the Bible" bg="rgba(255,186,49,.15)" color="#ffba31" />
-          </div>
-          <h1 style={{ fontFamily:"var(--fd)",color:"#f4f2df",fontSize:"clamp(38px,7vw,72px)",lineHeight:1.1,marginBottom:24,animation:"fadeUp 1s ease .15s",animationFillMode:"both" }}>
-            Fé. Fluência.<br/><span className="gt">Transformação.</span>
-          </h1>
-          <p style={{ color:"rgba(244,242,223,.65)",fontSize:"clamp(17px,2.2vw,20px)",lineHeight:1.7,maxWidth:620,margin:"0 auto 44px",animation:"fadeUp 1s ease .3s",animationFillMode:"both" }}>
-            Uma forma diferente de aprender inglês. Onde cada palavra tem significado, 
-            cada aula tem propósito, e a fluência cresce naturalmente.
-          </p>
-          <div style={{ display:"flex",gap:16,justifyContent:"center",flexWrap:"wrap",animation:"fadeUp 1s ease .45s",animationFillMode:"both" }}>
-            <a href={NIVELAMENTO} target="_blank" rel="noopener" className="bp">
-              Fazer o Nivelamento Grátis <I.Arrow/>
-            </a>
-            <a href="#metodo" className="bs">Explorar a Experiência</a>
+        <div className="hero-grid">
+          <div className="hero-copy">
+            <div style={{ animation:"fadeUp 1s ease",marginBottom:22 }}>
+              <Badge text="Learning English Through the Bible" bg="rgba(255,186,49,.15)" color="#ffba31" />
+            </div>
+            <h1 className="hero-h1" style={{ animation:"fadeUp 1s ease .1s",animationFillMode:"both" }}>
+              Aprenda inglês com o texto que <span className="gt">mais importa pra você.</span>
+            </h1>
+            <p className="hero-sub" style={{ animation:"fadeUp 1s ease .2s",animationFillMode:"both" }}>
+              Toque nas palavras destacadas <span className="hs-d">ao lado</span><span className="hs-m">abaixo</span> e ouça. Assim é uma aula da Let B: texto bíblico de verdade, vocabulário com significado e conversa desde o primeiro dia.
+            </p>
+            <div style={{ animation:"fadeUp 1s ease .3s",animationFillMode:"both" }}>
+              <a href={NIVELAMENTO} target="_blank" rel="noopener" className="bp hero-cta">
+                Fazer o nivelamento grátis <I.Arrow/>
+              </a>
+              <p className="hero-proof">Alunos em 7 estados do Brasil, no Texas, em Lisboa e em Londres</p>
+            </div>
           </div>
 
-          {/* Products */}
-          <div style={{ display:"flex",gap:16,justifyContent:"center",flexWrap:"wrap",marginTop:32,animation:"fadeUp 1s ease .6s",animationFillMode:"both" }}>
-            <a href={EBOOK} target="_blank" rel="noopener" style={{ display:"inline-flex",alignItems:"center",gap:8,padding:"10px 20px",borderRadius:10,background:"rgba(244,242,223,.06)",border:"1px solid rgba(244,242,223,.1)",color:"#f4f2df",fontSize:14,fontWeight:500,transition:"all .3s" }}>
-              <I.Book s={18}/> E-book Faith & Fluency
-            </a>
-            <a href={TRAVEL} target="_blank" rel="noopener" style={{ display:"inline-flex",alignItems:"center",gap:8,padding:"10px 20px",borderRadius:10,background:"rgba(244,242,223,.06)",border:"1px solid rgba(244,242,223,.1)",color:"#f4f2df",fontSize:14,fontWeight:500,transition:"all .3s" }}>
-              <I.Plane s={18}/> Let B Travel
-            </a>
-            <a href={AMOSTRA} target="_blank" rel="noopener" style={{ display:"inline-flex",alignItems:"center",gap:8,padding:"10px 20px",borderRadius:10,background:"rgba(244,242,223,.06)",border:"1px solid rgba(244,242,223,.1)",color:"#f4f2df",fontSize:14,fontWeight:500,transition:"all .3s" }}>
-              <I.Headphones s={18}/> Aula grátis: Mateus 6:26
-            </a>
+          <div className="hero-visual" style={{ animation:"fadeUp 1s ease .35s",animationFillMode:"both" }}>
+            <VerseStamp />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ TAMBÉM DA LET B ═══ */}
+      <section style={{ background:"#f4f2df",padding:"56px 24px" }}>
+        <div className="mx" style={{ maxWidth:1000 }}>
+          <h2 style={{ fontSize:"clamp(24px,3vw,30px)",lineHeight:1.2,marginBottom:24 }}>Também da Let B</h2>
+          <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:18 }} className="g2">
+            {[
+              { href:EBOOK, Icon:I.Book, color:"#fc5e2d", title:"E-book Faith & Fluency", desc:"Seu caminho para o inglês com propósito, no seu ritmo.", cta:"Conhecer o e-book" },
+              { href:TRAVEL, Icon:I.Plane, color:"#284684", title:"Let B Travel", desc:"Inglês prático pra viajar com mais segurança e liberdade.", cta:"Conhecer o Let B Travel" },
+            ].map(({ href, Icon, color, title, desc, cta })=>(
+              <a key={title} href={href} target="_blank" rel="noopener" className="also ch">
+                <span style={{ color,flexShrink:0,width:52,height:52,borderRadius:14,border:"1.5px solid rgba(30,30,30,.1)",display:"grid",placeItems:"center" }}><Icon s={24}/></span>
+                <span style={{ display:"block" }}>
+                  <span style={{ display:"block",fontFamily:"var(--fd)",fontSize:20,lineHeight:1.2 }}>{title}</span>
+                  <span style={{ display:"block",fontSize:15,lineHeight:1.5,opacity:.6,marginTop:4 }}>{desc}</span>
+                  <span style={{ display:"inline-flex",alignItems:"center",gap:6,fontSize:14,fontWeight:600,color:"#284684",marginTop:10 }}>{cta} <I.Arrow/></span>
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
