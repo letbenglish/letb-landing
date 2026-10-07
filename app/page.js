@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import VerseStamp from "./VerseStamp";
+import HeroField from "./HeroField";
 
 function useInView(opts = {}) {
   const ref = useRef(null);
@@ -114,7 +115,7 @@ export default function LetBLanding() {
         @media(max-width:900px){.g3{grid-template-columns:1fr!important}.g2{grid-template-columns:1fr!important}}
         @media(max-width:600px){.g4{grid-template-columns:1fr 1fr!important}}
         @media(max-width:450px){.g4{grid-template-columns:1fr!important}}
-        .hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(170deg,#1e1e1e 0%,#2a1a14 40%,#1e1e1e 100%);position:relative;overflow:hidden;padding:128px 24px 88px}
+        .hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(180deg,#1e1e1e 0%,#1e1e1e 38%,#1d2333 100%);position:relative;overflow:hidden;padding:128px 24px 200px}
         .hero-grid{max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:center;position:relative;z-index:1}
         .hero-h1{color:#f4f2df;font-size:clamp(40px,4.4vw,62px);line-height:1.08;margin-bottom:22px;text-wrap:balance}
         .hero-sub{color:rgba(244,242,223,.68);font-size:clamp(17px,1.4vw,19px);line-height:1.65;max-width:34em;margin-bottom:34px}
@@ -124,7 +125,7 @@ export default function LetBLanding() {
         .hero-visual{padding-top:40px}
         .also{display:flex;gap:18px;align-items:flex-start;padding:24px;border-radius:20px;background:rgba(30,30,30,.03);border:1px solid rgba(30,30,30,.06);color:#1e1e1e}
         @media(max-width:959px){
-          .hero{min-height:0;padding:104px 20px 64px}
+          .hero{min-height:0;padding:104px 20px 170px}
           .hero-grid{grid-template-columns:1fr;gap:28px}
           .hero-copy{max-width:640px}
           .hero-visual{padding-top:44px}
@@ -169,7 +170,7 @@ export default function LetBLanding() {
 
       {/* ═══ HERO ═══ */}
       <section className="hero">
-        <div style={{ position:"absolute",top:"50%",left:"72%",transform:"translate(-50%,-50%)",width:700,height:700,borderRadius:"50%",background:"radial-gradient(circle,rgba(252,94,45,.09) 0%,transparent 70%)",pointerEvents:"none" }}/>
+        <HeroField />
 
         <div className="hero-grid">
           <div className="hero-copy">
@@ -186,7 +187,7 @@ export default function LetBLanding() {
               <a href={NIVELAMENTO} target="_blank" rel="noopener" className="bp hero-cta">
                 Fazer o nivelamento grátis <I.Arrow/>
               </a>
-              <p className="hero-proof">Alunos em 7 estados do Brasil, no Texas, em Lisboa e em Londres</p>
+              <p className="hero-proof">Alunos no Brasil, nos EUA, em Portugal e no Reino Unido</p>
             </div>
           </div>
 
