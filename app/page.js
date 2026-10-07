@@ -68,6 +68,7 @@ export default function LetBLanding() {
   const TRAVEL = "https://letb-english.herospark.co/letb-travel";
   const EBOOK = "https://letb-english.herospark.co/faith-fluency-seu-caminho-para-o-ingles-com-proposito";
   const WHATSAPP = "https://wa.me/5541998167303?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Let%20B.";
+  const AMOSTRA = "/activities/matthew-6-amostra.html";
   const INSTA = "https://www.instagram.com/letb__english?igsh=djdvMmozbm1hcDcy";
   const EMAIL = "letb.english@gmail.com";
   const YOUTUBE = "https://www.youtube.com/@LETB__ENGLISH";
@@ -178,6 +179,9 @@ export default function LetBLanding() {
             </a>
             <a href={TRAVEL} target="_blank" rel="noopener" style={{ display:"inline-flex",alignItems:"center",gap:8,padding:"10px 20px",borderRadius:10,background:"rgba(244,242,223,.06)",border:"1px solid rgba(244,242,223,.1)",color:"#f4f2df",fontSize:14,fontWeight:500,transition:"all .3s" }}>
               <I.Plane s={18}/> Let B Travel
+            </a>
+            <a href={AMOSTRA} target="_blank" rel="noopener" style={{ display:"inline-flex",alignItems:"center",gap:8,padding:"10px 20px",borderRadius:10,background:"rgba(244,242,223,.06)",border:"1px solid rgba(244,242,223,.1)",color:"#f4f2df",fontSize:14,fontWeight:500,transition:"all .3s" }}>
+              <I.Headphones s={18}/> Aula grátis: Mateus 6:26
             </a>
           </div>
         </div>
@@ -553,6 +557,9 @@ export default function LetBLanding() {
             <div style={{ display:"flex",gap:16,justifyContent:"center",flexWrap:"wrap" }}>
               <a href={NIVELAMENTO} target="_blank" rel="noopener" className="bp" style={{ fontSize:17,padding:"18px 36px" }}>
                 Fazer o Nivelamento Agora <I.Arrow/>
+              </a>
+              <a href={AMOSTRA} target="_blank" rel="noopener" className="bs">
+                Experimente uma aula grátis
               </a>
               <a href={WHATSAPP} target="_blank" rel="noopener" className="bs">
                 <I.Whatsapp/> Falar no WhatsApp

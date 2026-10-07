@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/next'
+
 export const metadata = {
   title: 'Let B — Deixe o inglês ser parte de quem você é',
   description: 'Learning English Through the Bible. Uma metodologia única que une fé, propósito e fluência. Faça o nivelamento gratuito.',
@@ -18,6 +20,7 @@ export default function RootLayout({ children }) {
       </head>
       <body style={{ margin: 0, padding: 0 }}>
         {children}
+        <Analytics />
       </body>
     </html>
   )
