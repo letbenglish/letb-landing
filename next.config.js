@@ -15,7 +15,7 @@ const nextConfig = {
       { source: '/light1/week6', destination: '/light/week6.html', permanent: false },
       { source: '/light1/words', destination: '/light/words.html', permanent: false },
       // QR da contracapa ("Leve o seu pra casa"). Trocar o destination pelo link de pagamento quando existir.
-      { source: '/light1/comprar', destination: '/', permanent: false },
+      { source: '/light1/comprar', destination: '/light/comprar.html', permanent: false },
     ]
   },
 }
