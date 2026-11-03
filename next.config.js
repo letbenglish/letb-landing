@@ -4,6 +4,12 @@ const nextConfig = {
   // Links curtos impressos nos QR codes do livro "Let There B Light".
   // O QR aponta para o link curto; para trocar o destino, mude só o "destination".
   // permanent: false (307) para que o navegador não guarde o destino em cache.
+  // Lista de espera do lançamento: letbenglish.com/light (link da bio). Rewrite mantém a URL curta.
+  async rewrites() {
+    return [
+      { source: '/light', destination: '/light/lista.html' },
+    ]
+  },
   async redirects() {
     return [
       { source: '/light1', destination: '/light/you-did-it.html', permanent: false },
