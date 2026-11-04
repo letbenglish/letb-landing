@@ -188,7 +188,7 @@ input:focus{border-color:var(--depth);outline:none}
     if(!ENDPOINT){ window.open(waLink(nome,idades),'_blank'); finish(nome,idades); return; }
 
     go.disabled=true;go.textContent='Enviando...';
-    var body=new URLSearchParams({nome:nome,whatsapp:tel,idades:idades,origem:document.referrer||'direto'});
+    var body=new URLSearchParams({nome:nome,whatsapp:tel,idades:idades,origem:(location.pathname.indexOf('/flyer')===0?'Flyer':(document.referrer||'direto'))});
     fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:body})
       .then(function(){finish(nome,idades);})
       .catch(function(){go.disabled=false;go.textContent='Quero entrar na lista';

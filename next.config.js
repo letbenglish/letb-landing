@@ -8,6 +8,8 @@ const nextConfig = {
   async rewrites() {
     return [
       { source: '/light', destination: '/light/lista.html' },
+      // QR do flyer impresso: mesma página, origem marcada como "Flyer" na planilha.
+      { source: '/flyer', destination: '/light/lista.html' },
     ]
   },
   async redirects() {
