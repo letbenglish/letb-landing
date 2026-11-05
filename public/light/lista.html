@@ -43,6 +43,14 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .offer p{margin-top:8px;font-size:15px;color:#d8d5c2}
 .offer .ship{display:flex;gap:10px;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid rgba(244,242,223,.15);font-size:15px;color:var(--clarity)}
 .offer .ship b{color:var(--precious)}
+.lots{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.lot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;border:1px solid rgba(244,242,223,.18);color:#a9a593}
+.lot b{display:block;font-size:15px;color:#d8d5c2}.lot span{font-size:13px}
+.lot strong{font-family:var(--display);font-weight:400;font-size:26px;white-space:nowrap;color:#d8d5c2}
+.lot.on{background:var(--precious);border-color:var(--precious);color:#3a352a}
+.lot.on b,.lot.on strong{color:var(--depth)}
+.lot.on b::after{content:"AGORA";margin-left:8px;font-size:11px;letter-spacing:1.5px;background:var(--lively);color:#fff;padding:3px 8px;border-radius:20px;vertical-align:2px}
+.lot.past{opacity:.45;text-decoration:line-through}
 .wrap{max-width:560px;margin:0 auto;padding:34px 20px 56px}
 .lead{font-size:19px}
 .lead b{font-weight:700}
@@ -99,16 +107,19 @@ input:focus{border-color:var(--depth);outline:none}
   </ul>
 
   <div class="offer">
-    <div class="kick">Preço de pré-lançamento</div>
-    <div class="prices"><span class="now">R$ 89,90</span><span class="was">R$ 119,00</span></div>
-    <p>Só pra quem está na lista de espera. Depois do lançamento, o livro sai pelo preço cheio.</p>
+    <div class="kick">Lotes de lançamento</div>
+    <ul class="lots">
+      <li class="lot" data-ate="2026-11-11T00:00:00-03:00"><div><b>1º lote</b><span>Pré-lançamento · até terça, 10/11</span></div><strong>R$ 89,90</strong></li>
+      <li class="lot" data-ate="2026-12-01T00:00:00-03:00"><div><b>2º lote</b><span>Livro em produção · a partir de 11/11</span></div><strong>R$ 99,90</strong></li>
+      <li class="lot" data-ate="2100-01-01T00:00:00-03:00"><div><b>Valor cheio</b><span>Quando o livro ficar pronto</span></div><strong>R$ 119,00</strong></li>
+    </ul>
     <div class="ship">📦 <span>Entrega prevista: <b>dezembro de 2026</b></span></div>
   </div>
 
   <div class="card" id="card">
     <div id="formbox">
-      <h2>Entra na lista de espera</h2>
-      <p class="sub">Quem tá na lista compra primeiro, 24h antes de todo mundo, e paga R$ 89,90 em vez de R$ 119,00.</p>
+      <h2>Garanta o seu exemplar</h2>
+      <p class="sub" id="sub-preco">Garanta o seu no 1º lote: R$ 89,90 só até terça, 10/11.</p>
       <form id="f" novalidate>
         <div>
           <label for="nome">Seu nome</label>
@@ -150,6 +161,18 @@ input:focus{border-color:var(--depth);outline:none}
 <script>
 (function(){
   // Google Apps Script que salva na planilha "Lista de espera · Let There B Light" (Drive letb.english). Vazio = só WhatsApp.
+
+  // lotes: marca o lote atual pela data e atualiza o texto do preço
+  (function(){
+    var agora=new Date(),lots=[].slice.call(document.querySelectorAll('.lot')),achou=false;
+    lots.forEach(function(l,i){var fim=new Date(l.getAttribute('data-ate'));
+      if(!achou&&agora<fim){l.classList.add('on');achou=true;
+        var s=document.getElementById('sub-preco'),preco=l.querySelector('strong').textContent;
+        if(i===0)s.textContent='Garanta o seu no 1º lote: '+preco+' só até terça, 10/11.';
+        else if(i===1)s.textContent='2º lote: '+preco+'. O livro já está em produção, com entrega em dezembro.';
+        else s.textContent='Livro pronto: '+preco+'.';}
+      else if(!achou){l.classList.add('past');}});
+  })();
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwOpO24hzFU8ksoCtrFWOxzmusr3FgKDfcYKyh9vPBrGJ9bZUeiOsJlX_qWPuVF-Gyu/exec';
   var WA = '5541998167303';
 
