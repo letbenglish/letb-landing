@@ -130,14 +130,14 @@ input:focus{border-color:var(--depth);outline:none}
           </div>
         </div>
         <p class="err" id="err" role="alert"></p>
-        <button class="go" id="go" type="submit">Quero entrar na lista</button>
-        <p class="small">Sem spam. Só o aviso do lançamento.</p>
+        <button class="go" id="go" type="submit">Quero garantir o meu</button>
+        <p class="small">Ao tocar no botão, abrimos seu WhatsApp com a mensagem pronta. É só enviar.</p>
       </form>
     </div>
     <div class="done" id="done" aria-live="polite">
-      <h2>Você tá na lista! 🕯️</h2>
-      <p id="done-msg">Assim que a pré-venda abrir, você recebe o aviso no WhatsApp, 24h antes de todo mundo, com o preço de R$ 89,90.</p>
-      <a id="wa" href="#" target="_blank" rel="noopener">Mandar um oi no WhatsApp</a>
+      <h2>Quase lá! 🕯️</h2>
+      <p id="done-msg">Estamos abrindo seu WhatsApp com a mensagem pronta. Envie pra gente que respondemos com o PIX e os próximos passos.</p>
+      <a id="wa" href="#">Abrir o WhatsApp</a>
       <p class="note">Salva nosso número (41) 99816-7303 pra mensagem chegar certinho.</p>
     </div>
   </div>
@@ -164,7 +164,7 @@ input:focus{border-color:var(--depth);outline:none}
   });
 
   function waLink(nome,idades){
-    var t='Oi! Entrei na lista de espera do Let There B Light 🕯️\nNome: '+nome+(idades?'\nIdade das crianças: '+idades:'');
+    var t='Oi! Quero garantir meu Let There B Light 🕯️\nNome: '+nome+(idades?'\nIdade das crianças: '+idades:'');
     return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t);
   }
 
@@ -185,14 +185,12 @@ input:focus{border-color:var(--depth);outline:none}
     err.textContent='';
     if(window.va)window.va('event',{name:'light1_waitlist'});
 
-    if(!ENDPOINT){ window.open(waLink(nome,idades),'_blank'); finish(nome,idades); return; }
-
-    go.disabled=true;go.textContent='Enviando...';
+    go.disabled=true;go.textContent='Abrindo seu WhatsApp...';
     var body=new URLSearchParams({nome:nome,whatsapp:tel,idades:idades,origem:(location.pathname.indexOf('/flyer')===0?'Flyer':(document.referrer||'direto'))});
-    fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:body})
-      .then(function(){finish(nome,idades);})
-      .catch(function(){go.disabled=false;go.textContent='Quero entrar na lista';
-        err.textContent='Não foi agora. Tenta de novo ou chama a gente no WhatsApp.';});
+    // salva na planilha mesmo saindo da página (keepalive) e já leva a pessoa pro WhatsApp com a mensagem pronta
+    if(ENDPOINT){try{fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:body,keepalive:true});}catch(x){}}
+    finish(nome,idades);
+    setTimeout(function(){location.href=waLink(nome,idades);},350);
   });
 })();
 </script>
