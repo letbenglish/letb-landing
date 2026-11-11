@@ -109,8 +109,8 @@ input:focus{border-color:var(--depth);outline:none}
   <div class="offer">
     <div class="kick">Lotes de lançamento</div>
     <ul class="lots">
-      <li class="lot" data-ate="2026-11-11T00:00:00-03:00"><div><b>1º lote</b><span>Pré-lançamento · até terça, 10/11</span></div><strong>R$ 89,90</strong></li>
-      <li class="lot" data-ate="2026-12-01T00:00:00-03:00"><div><b>2º lote</b><span>Livro em produção · a partir de 11/11</span></div><strong>R$ 99,90</strong></li>
+      <li class="lot" data-ate="2026-11-12T00:00:00-03:00"><div><b>1º lote</b><span>Pré-lançamento · até hoje, 11/11</span></div><strong>R$ 89,90</strong></li>
+      <li class="lot" data-ate="2026-12-01T00:00:00-03:00"><div><b>2º lote</b><span>Livro em produção · a partir de 12/11</span></div><strong>R$ 99,90</strong></li>
       <li class="lot" data-ate="2100-01-01T00:00:00-03:00"><div><b>Valor cheio</b><span>Quando o livro ficar pronto</span></div><strong>R$ 119,00</strong></li>
     </ul>
     <div class="ship">📦 <span>Entrega prevista: <b>dezembro de 2026</b></span></div>
@@ -119,7 +119,7 @@ input:focus{border-color:var(--depth);outline:none}
   <div class="card" id="card">
     <div id="formbox">
       <h2>Garanta o seu exemplar</h2>
-      <p class="sub" id="sub-preco">Garanta o seu no 1º lote: R$ 89,90 só até terça, 10/11.</p>
+      <p class="sub" id="sub-preco">Garanta o seu no 1º lote: R$ 89,90 só até hoje, 11/11.</p>
       <form id="f" novalidate>
         <div>
           <label for="nome">Seu nome</label>
@@ -168,7 +168,7 @@ input:focus{border-color:var(--depth);outline:none}
     lots.forEach(function(l,i){var fim=new Date(l.getAttribute('data-ate'));
       if(!achou&&agora<fim){l.classList.add('on');achou=true;
         var s=document.getElementById('sub-preco'),preco=l.querySelector('strong').textContent;
-        if(i===0)s.textContent='Garanta o seu no 1º lote: '+preco+' só até terça, 10/11.';
+        if(i===0)s.textContent='Garanta o seu no 1º lote: '+preco+' só até hoje, 11/11.';
         else if(i===1)s.textContent='2º lote: '+preco+'. O livro já está em produção, com entrega em dezembro.';
         else s.textContent='Livro pronto: '+preco+'.';}
       else if(!achou){l.classList.add('past');}});
