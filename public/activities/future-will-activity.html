@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Future with Will · Let B Activity</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --depth:#1e1e1e;--lively:#fc5e2d;--precious:#ffba31;--clarity:#f4f2df;
+  --growth:#4caa49;--connection:#284684;--clarity-dark:#e8e5cc;
+  --display:'DM Serif Display',serif;--body:'DM Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--clarity);color:var(--depth);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+
+/* header */
+header{background:var(--depth);color:var(--clarity);padding:44px 0 56px;position:relative;overflow:hidden}
+header .wrap{padding-bottom:0}
+.brand{font-family:var(--display);font-size:22px;color:var(--precious);letter-spacing:.3px}
+.brand span{color:var(--lively)}
+h1{font-family:var(--display);font-weight:400;font-size:44px;line-height:1.1;margin:18px 0 12px}
+h1 em{color:var(--lively);font-style:italic}
+.lead{max-width:520px;opacity:.85}
+.stamp{position:absolute;right:28px;top:34px;width:118px;height:118px;border:3px dashed var(--precious);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(6deg);text-align:center}
+.stamp b{font-family:var(--display);font-size:38px;color:var(--precious);line-height:1}
+.stamp small{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+@media(max-width:620px){.stamp{display:none}h1{font-size:36px}}
+
+/* score bar */
+.scorebar{position:sticky;top:0;z-index:5;background:var(--clarity);border-bottom:2px solid var(--clarity-dark)}
+.scorebar .wrap{display:flex;align-items:center;gap:14px;padding-top:12px;padding-bottom:12px}
+.track{flex:1;height:10px;background:var(--clarity-dark);border-radius:10px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--growth);border-radius:10px;transition:width .4s}
+.scoretxt{font-weight:700;font-size:15px;white-space:nowrap}
+
+/* tip box */
+.tip{margin:34px 0 8px;background:#fff8e6;border-left:5px solid var(--precious);border-radius:0 14px 14px 0;padding:18px 22px}
+.tip h3{font-family:var(--display);font-weight:400;font-size:22px;margin-bottom:6px}
+.tip ul{list-style:none}
+.tip li{margin:4px 0}
+.tip code{font-family:var(--body);font-weight:700;color:var(--connection);background:rgba(40,70,132,.08);padding:1px 6px;border-radius:6px}
+
+/* sections */
+section{margin-top:40px}
+.sec-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:6px}
+.num{flex:none;width:42px;height:42px;border:2px dashed var(--lively);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:22px;color:var(--lively)}
+h2{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.15}
+.instr{color:#555;margin:2px 0 16px 56px;font-size:15px}
+.badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;vertical-align:middle;margin-left:6px}
+.b-word{background:var(--connection);color:var(--clarity)}
+.b-life{background:var(--precious);color:var(--depth)}
+
+ol.items{list-style:none;counter-reset:i}
+ol.items li{counter-increment:i;background:#fbfaf0;border:1.5px solid var(--clarity-dark);border-radius:14px;padding:14px 16px 14px 48px;margin-bottom:10px;position:relative;line-height:2.1}
+ol.items li::before{content:counter(i);position:absolute;left:16px;top:14px;font-weight:700;color:var(--lively);line-height:2.1}
+.ref{display:block;font-size:13px;color:var(--connection);font-weight:600;line-height:1.4;margin-top:2px}
+.hint{color:#888;font-size:14px}
+.verse{font-family:var(--display);font-size:19px}
+
+input.blank{font-family:var(--body);font-size:16px;font-weight:600;color:var(--connection);border:none;border-bottom:2px solid var(--depth);background:transparent;padding:0 4px 1px;text-align:center;outline:none;border-radius:0;transition:all .2s}
+input.blank:focus{border-bottom-color:var(--lively);background:rgba(252,94,45,.06)}
+input.blank.ok{color:var(--growth);border-bottom-color:var(--growth);background:rgba(76,170,73,.08)}
+input.blank.no{color:var(--lively);border-bottom-color:var(--lively);background:rgba(252,94,45,.08)}
+
+.choices{display:inline-flex;gap:8px;margin-left:4px;vertical-align:middle}
+.choices button{font-family:var(--body);font-size:15px;font-weight:600;border:2px solid var(--depth);background:transparent;border-radius:20px;padding:2px 14px;cursor:pointer;line-height:1.6}
+.choices button.sel{background:var(--depth);color:var(--clarity)}
+.choices button.ok{background:var(--growth);border-color:var(--growth);color:#fff}
+.choices button.no{background:var(--lively);border-color:var(--lively);color:#fff}
+
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;border-radius:24px;padding:10px 22px;cursor:pointer}
+.btn-main{background:var(--lively);color:var(--clarity)}
+.btn-main:hover{background:#ff7a52}
+.btn-ghost{background:transparent;color:var(--depth);border:2px solid var(--depth)}
+.feedback{font-weight:600;font-size:15px}
+.feedback.good{color:var(--growth)}
+.feedback.mid{color:var(--connection)}
+
+/* writing */
+textarea{width:100%;min-height:150px;font-family:var(--body);font-size:16px;line-height:1.6;padding:14px 16px;border:2px solid var(--clarity-dark);border-radius:14px;background:#fbfaf0;resize:vertical;outline:none}
+textarea:focus{border-color:var(--lively)}
+.prompts{margin:0 0 12px 0;padding-left:20px}
+.prompts li{margin:3px 0}
+
+/* final */
+.final{margin-top:48px;background:var(--depth);color:var(--clarity);border-radius:22px;padding:30px 28px;text-align:center;display:none}
+.final h2{color:var(--precious)}
+.final p{opacity:.9;margin-top:8px}
+footer{text-align:center;margin-top:46px;font-size:14px;color:#777}
+footer .brand{font-size:18px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Let <span>B</span> · English Through the Bible</div>
+    <h1>The future <em>with will</em></h1>
+    <p class="lead">Revisão das nossas 3 primeiras aulas. Complete as frases, clique em <b>Check</b> e veja na hora como foi. Pode errar à vontade, é pra isso que serve.</p>
+    <div class="stamp"><b>will</b><small>future</small></div>
+  </div>
+</header>
+
+<div class="scorebar"><div class="wrap">
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <div class="scoretxt" id="scoretxt">0 / 0</div>
+</div></div>
+
+<main class="wrap">
+
+  <div class="tip">
+    <h3>Quick reminder</h3>
+    <ul>
+      <li><code>will</code> + verbo base → <i>I will help you.</i> / <i>I'll help you.</i></li>
+      <li><code>won't</code> = will not → <i>I won't forget.</i></li>
+      <li>Pergunta: <code>Will</code> + sujeito + verbo → <i>Will you come?</i></li>
+      <li>Usamos pra promessas, decisões na hora e previsões.</li>
+    </ul>
+  </div>
+
+  <div id="sections"></div>
+
+  <section>
+    <div class="sec-head"><div class="num">6</div><h2>Your turn <span class="badge b-life">writing</span></h2></div>
+    <p class="instr">Escreva 3 frases sobre o seu futuro usando <b>will</b> ou <b>won't</b>. Depois copie e me mande no WhatsApp.</p>
+    <ol class="prompts">
+      <li>A promise: <i>I will…</i></li>
+      <li>Something you won't do this week: <i>I won't…</i></li>
+      <li>A prayer or hope: <i>God will…</i></li>
+    </ol>
+    <textarea id="writing" placeholder="1. I will...&#10;2. I won't...&#10;3. God will..."></textarea>
+    <div class="actions">
+      <button class="btn btn-main" id="copyBtn">Copiar meu texto</button>
+      <span class="feedback" id="copyFb"></span>
+    </div>
+  </section>
+
+  <div class="final" id="final">
+    <h2 id="finalTitle">Well done!</h2>
+    <p id="finalTxt"></p>
+  </div>
+
+  <footer>
+    <div class="brand">Let <span style="color:var(--lively)">B</span></div>
+    Deixe o inglês ser parte de quem você é.
+  </footer>
+</main>
+
+<script>
+/* {answer|alt} = blank. Answers starting with "will X" also accept "'ll X"; "won't X" also accepts "will not X". */
+const SECTIONS = [
+  {
+    title:"Promises from the Word", badge:["the Word","b-word"],
+    instr:"Complete os versículos com <b>will + verbo</b>. O verbo está entre parênteses.",
+    type:"fill",
+    items:[
+      {t:"Ask and it {will be} given to you; seek and you {will find}.", h:"(be) (find)", r:"Matthew 7:7", v:true},
+      {t:"The peace of God {will guard} your hearts and your minds in Christ Jesus.", h:"(guard)", r:"Philippians 4:7", v:true},
+      {t:"Those who hope in the LORD {will renew} their strength.", h:"(renew)", r:"Isaiah 40:31", v:true},
+      {t:"The LORD your God {will be} with you wherever you go.", h:"(be)", r:"Joshua 1:9", v:true},
+      {t:"You {will seek} me and find me when you seek me with all your heart.", h:"(seek)", r:"Jeremiah 29:13", v:true},
+      {t:"I {will come} back and take you to be with me.", h:"(come)", r:"John 14:3", v:true}
+    ]
+  },
+  {
+    title:"Everyday life", badge:["daily","b-life"],
+    instr:"Mesma coisa, agora no dia a dia. Pode usar <b>will</b> ou <b>'ll</b>.",
+    type:"fill",
+    items:[
+      {t:"It's cold in here. I {will close} the window.", h:"(close)"},
+      {t:"The phone is ringing! I {will answer} it.", h:"(answer)"},
+      {t:"I'm really tired. I think I {will go} to bed early tonight.", h:"(go)"},
+      {t:"Take an umbrella. Maybe it {will rain} later.", h:"(rain)"},
+      {t:"Don't worry, we {will help} you with the move.", h:"(help)"},
+      {t:"My sister {will be} 30 next month.", h:"(be)"}
+    ]
+  },
+  {
+    title:"Saying no: won't", badge:["negative","b-life"],
+    instr:"Use <b>won't</b> (ou will not) + verbo.",
+    type:"fill",
+    items:[
+      {t:"Don't worry, I {won't forget} your birthday.", h:"(forget)"},
+      {t:"It's 11 p.m. The bakery {won't be} open now.", h:"(be)"},
+      {t:"Be strong. God {won't leave} you alone.", h:"(leave)"},
+      {t:"I'm full, thanks. I {won't eat} dessert.", h:"(eat)"},
+      {t:"He's sick, so he {won't come} to class today.", h:"(come)"}
+    ]
+  },
+  {
+    title:"Asking questions", badge:["questions","b-life"],
+    instr:"Monte as perguntas e as respostas curtas.",
+    type:"fill",
+    items:[
+      {t:"{Will} you {help} me with my homework?", h:"(you / help)"},
+      {t:"{Will} it {rain} tomorrow?", h:"(it / rain)"},
+      {t:"What time {will} you {arrive} at church?", h:"(you / arrive)"},
+      {t:"Will you call me later? — Yes, I {will}.", h:"(resposta curta, sim)"},
+      {t:"Will she come to the party? — No, she {won't}.", h:"(resposta curta, não)"}
+    ]
+  },
+  {
+    title:"Will or won't?", badge:["choose","b-life"],
+    instr:"Leia a frase e escolha a opção que faz sentido.",
+    type:"choose",
+    items:[
+      {t:"I promise I ___ tell anyone your secret.", a:"won't"},
+      {t:"Thank you so much! I ___ pay you back tomorrow.", a:"will"},
+      {t:"It's too expensive. I ___ buy it.", a:"won't"},
+      {t:"Hurry up, or we ___ be late!", a:"will"},
+      {t:"Relax, the test ___ be hard. You studied a lot!", a:"won't"},
+      {t:"Don't be afraid. God ___ take care of you.", a:"will"}
+    ]
+  }
+];
+
+const norm = s => s.toLowerCase().replace(/[’`´]/g,"'").replace(/\s+/g," ").trim().replace(/[.!?]$/,"");
+function accepted(ans){
+  const a = norm(ans), set = new Set([a]);
+  if(a.startsWith("will ") ) set.add("'ll "+a.slice(5));
+  if(a.startsWith("won't ")) set.add("will not "+a.slice(6));
+  if(a==="won't") set.add("will not");
+  return set;
+}
+
+const state = {}; // secIdx -> {total, correct}
+const root = document.getElementById("sections");
+
+SECTIONS.forEach((sec,si)=>{
+  const el = document.createElement("section");
+  el.innerHTML = `<div class="sec-head"><div class="num">${si+1}</div><h2>${sec.title} <span class="badge ${sec.badge[1]}">${sec.badge[0]}</span></h2></div>
+  <p class="instr">${sec.instr}</p><ol class="items"></ol>
+  <div class="actions"><button class="btn btn-main chk">Check</button><button class="btn btn-ghost rev">Ver respostas</button><span class="feedback"></span></div>`;
+  const ol = el.querySelector("ol");
+  let total = 0;
+
+  sec.items.forEach(it=>{
+    const li = document.createElement("li");
+    if(sec.type==="fill"){
+      const html = it.t.replace(/\{([^}]+)\}/g,(m,ans)=>{
+        total++;
+        const w = Math.max(ans.length+2,5);
+        return `<input class="blank" data-ans="${ans.replace(/"/g,'&quot;')}" style="width:${w*0.62+1}em" autocomplete="off" autocapitalize="off" spellcheck="false">`;
+      });
+      li.innerHTML = `<span class="${it.v?'verse':''}">${html}</span> <span class="hint">${it.h||""}</span>${it.r?`<span class="ref">${it.r}</span>`:""}`;
+    } else {
+      total++;
+      const parts = it.t.split("___");
+      li.innerHTML = `${parts[0]}<b style="color:var(--connection)">___</b>${parts[1]}<br><span class="choices" data-ans="${it.a}"><button>will</button><button>won't</button></span>`;
+      li.querySelectorAll(".choices button").forEach(b=>b.onclick=()=>{
+        li.querySelectorAll(".choices button").forEach(x=>x.className="");
+        b.className="sel";
+      });
+    }
+    ol.appendChild(li);
+  });
+
+  state[si] = {total, correct:0};
+  const fb = el.querySelector(".feedback");
+
+  el.querySelector(".chk").onclick = ()=>{
+    let c = 0;
+    el.querySelectorAll("input.blank").forEach(inp=>{
+      const ok = accepted(inp.dataset.ans).has(norm(inp.value));
+      inp.classList.toggle("ok",ok); inp.classList.toggle("no",!ok && inp.value.trim()!=="");
+      if(ok) c++;
+    });
+    el.querySelectorAll(".choices").forEach(ch=>{
+      const sel = ch.querySelector("button.sel, button.ok, button.no");
+      ch.querySelectorAll("button").forEach(b=>{ if(b.classList.contains("ok")||b.classList.contains("no")) b.className="sel"; });
+      const s = ch.querySelector("button.sel");
+      if(s){ const ok = s.textContent===ch.dataset.ans; s.className = ok?"ok":"no"; if(ok) c++; }
+    });
+    state[si].correct = c;
+    fb.className = "feedback " + (c===total?"good":"mid");
+    fb.textContent = c===total ? `${c}/${total} — perfect! 🙌` : `${c}/${total}. Revise os que ficaram em laranja e tente de novo.`;
+    updateScore();
+  };
+
+  el.querySelector(".rev").onclick = ()=>{
+    el.querySelectorAll("input.blank").forEach(inp=>{
+      if(!accepted(inp.dataset.ans).has(norm(inp.value))){ inp.value = inp.dataset.ans; inp.classList.remove("no","ok"); }
+    });
+    el.querySelectorAll(".choices").forEach(ch=>{
+      ch.querySelectorAll("button").forEach(b=>{ b.className = b.textContent===ch.dataset.ans ? "ok" : ""; });
+    });
+    fb.className="feedback mid"; fb.textContent="Respostas na tela. Leia cada frase em voz alta 🗣️";
+  };
+
+  root.appendChild(el);
+});
+
+function updateScore(){
+  let t=0,c=0; Object.values(state).forEach(s=>{t+=s.total;c+=s.correct;});
+  document.getElementById("fill").style.width = (t? c/t*100:0)+"%";
+  document.getElementById("scoretxt").textContent = `${c} / ${t}`;
+  const fin = document.getElementById("final");
+  if(c>0){
+    fin.style.display="block";
+    const pct = c/t;
+    document.getElementById("finalTitle").textContent = pct===1 ? "You nailed it!" : pct>=.7 ? "Great job!" : "Keep going!";
+    document.getElementById("finalTxt").textContent = pct===1
+      ? "Tudo certo. Agora faz a parte 6 e me manda suas frases."
+      : `Você acertou ${c} de ${t}. Volta nos que ficaram em laranja, e não esquece da parte 6.`;
+  }
+}
+updateScore();
+
+document.getElementById("copyBtn").onclick = async ()=>{
+  const fb = document.getElementById("copyFb");
+  const txt = document.getElementById("writing").value.trim();
+  if(!txt){ fb.textContent="Escreva suas frases primeiro 😉"; fb.className="feedback mid"; return; }
+  try{ await navigator.clipboard.writeText("Future with will — my sentences:\n"+txt); fb.textContent="Copiado! Agora é só colar no WhatsApp."; fb.className="feedback good"; }
+  catch(e){ fb.textContent="Não consegui copiar. Seleciona o texto e copia manualmente."; fb.className="feedback mid"; }
+};
+</script>
+</body>
+</html>
